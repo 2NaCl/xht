@@ -1,0 +1,38 @@
+server:
+  port: 16012
+  tomcat:
+    remote-ip-header: x-forwarded-for
+    protocol-header: x-forwarded-proto
+    port-header: X-Forwarded-Port
+spring:
+  application:
+    name: xht
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xht?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    password:
+  jpa:
+    database: MySQL
+    show-sql: false
+    open-in-view: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: test
+      enable-auto-commit: true
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+jwt:
+  config:
+    key: saas-ihrm
+    ttl: 36000000
+netty:
+  port: 9090
+  host: 127.0.0.1
