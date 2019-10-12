@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.ht.oa.netty.protocol.protobuf;
+
+option optimize_for = SPEED;
+option java_package = "com.ht.oa.netty.protocol.protobuf";
+option java_outer_classname = "MessageBase";
+
+message Message {
+    string requestId = 1;
+    CommandType cmd = 2;
+    string content = 3;
+    enum CommandType {
+        NORMAL = 0; //常规业务消息
+        HEARTBEAT_REQUEST = 1; //客户端心跳消息
+        HEARTBEAT_RESPONSE = 2; //服务端心跳消息
+    }
+}
